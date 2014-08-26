@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>网速够快，人心更快 | 博刻</title>
+    <title>初识three.js | 博刻</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ren">
     
-    <meta name="description" itemprop="description" content="网速够快，人心更快，快到不用去了解真想便迫不及待得去碾碎、批评、足够苍白，足够残忍。人人都是救世主，人人都是灭世狂。">
+    <meta name="description" content="因为实验室项目的原因，第一次接触到WebGL技术（WebGL是一种3D绘图标准，这种绘图技术标准允许把JavaScript和OpenGL ES 2.0结合在一起，通过增加OpenGL ES 2.0的一个JavaScript绑定，WebGL可以为HTML5 Canvas提供硬件3D加速渲染，这样Web">
     
     
     
@@ -70,14 +70,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/08/20/sousuo/" title="网速够快，人心更快" itemprop="url">网速够快，人心更快</a>
+      <a href="/2014/08/26/初识threejs/" title="初识three.js" itemprop="url">初识three.js</a>
   </h1>
   <p class="article-author">By
        
 		<a href="http://redcafe7.com/about" title="Ren" target="_blank" itemprop="author">Ren</a>
 		
   <p class="article-time">
-    <time datetime="2014-08-19T16:29:12.000Z" itemprop="datePublished"> 发表于 8月 20 2014</time>
+    <time datetime="2014-08-26T04:59:37.000Z" itemprop="datePublished"> 发表于 8月 26 2014</time>
     
   </p>
 </header>
@@ -91,11 +91,12 @@
 		
 		</div>
 		
-		<p>从影片开始正式把情节铺展开，我就在等叶蓝秋的结局，会是一个大家坐一块听她解释所有原委最后释怀，还是她一个人孤苦死去已达到批判网络暴力的主题。直到最后我才发现自己又犯了不是黑就是白的错误。人死心活，凯爷没在执迷他的忧愁江湖，终于用一环扣一环的线索把道理讲通了。</p>
-<p>简单快速往往意味着会省略掉中间步骤而导致误解，这也是网络世界一致的弊病。当人们都在网络上积极抢占道德制定高点时，却忘了自己得到的可能不是全部信息！于是，没人在意叶蓝秋是因为什么不让坐，是因为什么在老板怀里哭。网速够快，人心更快，快到不用去了解真想便迫不及待得去碾碎、批评、践踏，足够苍白，足够残忍。人人都是救世主，人人都<br>是灭世狂。</p>
-<p>信任该信任的，珍惜该珍惜的。不要胡乱不怀好意的猜测琢磨。隔着屏幕往往就隔着真想，所以叶蓝秋只能在角落忍受暴风骤雨；眼见甚至不一定为实，所以有莫小渝误会自己老公断送家庭；太过主观就会臆断，所以会有陈若兮和杨佳琪认定叶蓝秋是在报复她们。原本该信任，该珍惜的，在快速高效的今天，都太容易被动摇被击碎。—-白岩松：捍卫常识，建立理性，寻找信仰。</p>
-<p>ps：高原原、赵又廷是其一，王学圻、陈红是其二，姚晨、赵又廷、王珞丹时是其三。三条线相互牵扯影响，虽然差一点引人入胜的快感，但也足够精彩。高圆圆同学很美，影片360的展示，本人心中她绝对是内地最好的一张脸之一；赵又廷没什么出彩，这注定是一场女人戏；王学圻和陈红俩戏骨游刃有余，看完电影之后还能回忆起来的除了高原原的脸就是这两人的表演；姚晨和王珞丹中规中矩，相比于高和陈略逊；凯爷终于摆脱了之前《无极》、《赵氏孤儿》的莫名忧情，值得肯定的新作！</p>
-<p><img src="http://redcafe7blog.qiniudn.com/c89fb545503b15e0828bf3eeeabf6b23.jpg" alt="搜索海报"></p>
+		<p>因为实验室项目的原因，第一次接触到WebGL技术（WebGL是一种3D绘图标准，这种绘图技术标准允许把JavaScript和OpenGL ES 2.0结合在一起，通过增加OpenGL ES 2.0的一个JavaScript绑定，WebGL可以为HTML5 Canvas提供硬件3D加速渲染，这样Web开发人员就可以借助系统显卡来在浏览器里更流畅地展示3D场景和模型了）。随着学习的深入，three.js就成了我现阶段学习的核心内容。</p>
+<blockquote>
+<p>Three.js is usually used with a new technology called WebGL, a JavaScript API<br>for rendering graphics without plugins. The API is based on OpenGL, a desktop<br>graphics API (GLstands for graphics library).</p>
+</blockquote>
+<p><a href="http://threejs.org/" target="_blank" rel="external">http://threejs.org/</a>这里有three.js大量例子可供参考；[点击这里]（<a href="https://codeload.github.com/mrdoob/three.js/legacy.zip/master）下载three.js源目录" target="_blank" rel="external">https://codeload.github.com/mrdoob/three.js/legacy.zip/master）下载three.js源目录</a><br>下图是three.js源目录截图：<a href="http://redcafe7blog.qiniudn.com/3js%E6%BA%90%E7%9B%AE%E5%BD%95.png" target="_blank" rel="external"></a><br>Build目录：包含两个文件，three.js 和three.min.js 。这是three.js最终被引用的文件。一个已经压缩，一个没有压缩的js文件。<br>Docs目录：这里是three.js的帮助文档，里面是各个函数的api，可惜并没有详细的解释。试图用这些文档来学会three.js是不可能的。<br>Editor目录：一个类似3D-max的简单编辑程序，它能创建一些三维物体。<br>Examples目录：一些很有趣的例子demo，可惜没有文档介绍。对图像学理解不深入的同学，学习成本非常高。<br>Src目录：源代码目录，里面是所有源代码。<br>Test目录：一些测试代码，基本没用。<br>Utils目录：存放一些脚本，python文件的工具目录。例如将3D-Max格式的模型转换为three.js特有的json模型。<br>.gitignore文件：git工具的过滤规则文件，没有用。<br>CONTRIBUTING.md文件：一个怎么报bug，怎么获得帮助的说明文档。<br>LICENSE文件：版权信息。<br>README.md文件：介绍three.js的一个文件，里面还包含了各个版本的更新内容列表。</p>
+<p>编译器推荐使用webstorm</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -103,13 +104,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/电影/">电影</a>
+  <a class="article-category-link" href="/categories/学习/">学习</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/影评/">影评</a>
+  <span></span> <a href="/tags/threejs/">three.js</a><a href="/tags/WebGL/">WebGL</a>
   </div>
 
 </div>
@@ -117,7 +118,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://redcafe7.com/2014/08/20/sousuo/" data-title="网速够快，人心更快 | 博刻" data-tsina="null" class="share clearfix">
+  <div data-url="http://redcafe7.com/2014/08/26/初识threejs/" data-title="初识three.js | 博刻" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -127,18 +128,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/08/20/他们说/" title="他们说">
+ <a href="/2014/08/26/markdown/" title="学习markdown">
   <strong>上一篇：</strong><br/>
   <span>
-  他们说</span>
+  学习markdown</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/05/04/催眠大师/"  title="催眠大师">
+<a href="/2014/08/21/老式孤独/"  title="老式孤独">
  <strong>下一篇：</strong><br/> 
- <span>催眠大师
+ <span>老式孤独
 </span>
 </a>
 </div>
