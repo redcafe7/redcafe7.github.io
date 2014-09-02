@@ -4,12 +4,19 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>他们说 | 博刻</title>
+    <title>three.js基础(1) | 博刻</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ren">
     
-    <meta name="description" content="这个初夏，弗爵爷、斯科尔斯、贝克汉姆，说句矫情话：作为曼联球迷注定不好过。我想的，不止如此。。。他们说要变成一个成熟的人，变成一种风轻云淡的人。就像《在云端》里的背包理论一样，烧掉那些攀爬在你肩膀上的有的没的。你可以站在高处看事情变化，要懂得总会有要走的人，总会有回来的事。看轻、淡定、从容，没有羁绊，不会动情。没必要去挖掘那些流在细微之处的那些感觉，没必要为了一支足球队调动情绪，没必要为了一个人牵挂动容高兴难过。">
+    <meta name="description" content="首先，最基本的html：
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+  &amp;lt;head&amp;gt;
+    &amp;lt;meta charset=&quot;utf-8&quot;&amp;gt;
+    &amp;lt;style&amp;gt;
+      body {
+        background-colo">
     
     
     
@@ -70,14 +77,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/08/20/他们说/" title="他们说" itemprop="url">他们说</a>
+      <a href="/2014/08/05/threejs基础(1)/" title="three.js基础(1)" itemprop="url">three.js基础(1)</a>
   </h1>
   <p class="article-author">By
        
 		<a href="http://redcafe7.com/about" title="Ren" target="_blank" itemprop="author">Ren</a>
 		
   <p class="article-time">
-    <time datetime="2014-08-20T04:23:29.000Z" itemprop="datePublished"> 发表于 8月 20 2014</time>
+    <time datetime="2014-08-05T15:07:23.000Z" itemprop="datePublished"> 发表于 8月 5 2014</time>
     
   </p>
 </header>
@@ -87,25 +94,69 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#scene"><span class="toc-number">1.</span> <span class="toc-text">scene</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mesh,geometry,material"><span class="toc-number">2.</span> <span class="toc-text">mesh,geometry,material</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#renderer"><span class="toc-number">3.</span> <span class="toc-text">renderer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#camera"><span class="toc-number">4.</span> <span class="toc-text">camera</span></a></li></ol>
 		
 		</div>
 		
-		<p>这个初夏，弗爵爷、斯科尔斯、贝克汉姆，说句矫情话：作为曼联球迷注定不好过。我想的，不止如此。。。<br>他们说<br>要变成一个成熟的人，变成一种风轻云淡的人。就像《在云端》里的背包理论一样，烧掉那些攀爬在你肩膀上的有的没的。你可以站在高处看事情变化，要懂得总会有要走的人，总会有回来的事。看轻、淡定、从容，没有羁绊，不会动情。没必要去挖掘那些流在细微之处的那些感觉，没必要为了一支足球队调动情绪，没必要为了一个人牵挂动容高兴难过。<a id="more"></a>要学会把有利的因素放在重要位置，屏蔽消极因素。就像安妮宝贝在她作品里推崇的淡然笃定，好像，很对。<br>可是<br>我选择另一种成熟，她不是需要一直做出对自己有利的决定，而是知道自己内心笃定什么，并勇敢追求，不怕失去。我情愿为了看曼联比赛熬夜，为了球队激动或者担心，为了某个人付出些牵挂。所谓的”消极”也是人生的一部分，是自己作为独立生命个体又一份独一无二的体验，多一份体验，对生命则少一份辜负。这样的时刻，我宁愿让自己矫情的怀念，而不是做高伫云端不动声色的神。太过聪明或者太过冷静，就是种缺失。</p>
-  
+		<p>首先，最基本的html：</p>
+<pre><code><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css">
+      <span class="tag">body</span> <span class="rules">{
+        <span class="rule"><span class="attribute">background-color</span>:<span class="value"> <span class="hexcolor">#ffffff</span></span></span>;
+        <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;
+        <span class="rule"><span class="attribute">overflow</span>:<span class="value"> hidden</span></span>;
+        <span class="rule">}</span></span>
+    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+ <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+   <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"three.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+   <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">here is ur javascript code</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><p>在“here is ur javascript code”建立canvas画布，并在其中加入我们所要渲染的场景。<br>使用three.js渲染出3D效果，首先我们要了解几个基本变量：</p>
+<pre><code><span class="keyword">var</span> scene,camera,renderer;
+<span class="keyword">var</span> geometry,material,mesh;
+</code></pre><h2 id="scene">scene</h2>
+<p>一个scene，笔者理解的意思就是一个容器，可以设定容器的大小，需要向其中加入3D模型，灯光等等，才能显现出美妙的效果</p>
+<h2 id="mesh,geometry,material">mesh,geometry,material</h2>
+<p>一个mesh对象，就是可以在scene中显现的效果<br>在设定完mesh各种之后，利用</p>
+<pre><code>scene.<span class="built_in">add</span>(mesh);
+</code></pre><p>将mesh对象添加到scene中<br>她包括了geometry,material两方面</p>
+<blockquote>
+<p>geometry, which is the object’s shape, and a material, which is a color,<br>image,or other texture that defines how the faces of the shape appear.</p>
+</blockquote>
+<pre><code>geometry = <span class="keyword">new</span> THREE.IcosahedronGeometry(<span class="number">200</span>, <span class="number">1</span>);
+material = <span class="keyword">new</span> THREE.MeshBasicMaterial({ color: <span class="number">0x000000</span>, wireframe: <span class="literal">true</span>,wireframeLinewidth: <span class="number">2</span> });
+mesh = <span class="keyword">new</span> THREE.Mesh(geometry, material);
+</code></pre><h2 id="renderer">renderer</h2>
+<p>three.js通过renderer将scene中的呈现出来，她会向DOM中默认加入canvas元素</p>
+<pre><code><span class="keyword">renderer</span> = new THREE.CanvasRenderer();
+<span class="keyword">renderer</span>.setSize(<span class="keyword">window</span>.innerWidth, <span class="keyword">window</span>.innerHeight);
+document.body.appendChild(<span class="keyword">renderer</span>.domElement);
+</code></pre><h2 id="camera">camera</h2>
+<p>camera告诉renderer，浏览器应该从哪个地方（坐标），哪个角度来渲染scene</p>
+<blockquote>
+<p>camerawould be their eyes, renderer would be their brain, and scenewould be their universe.</p>
+</blockquote>
+<pre><code><span class="keyword">camera</span> = new THREE.PerspectiveCamera(<span class="number">75</span>, <span class="keyword">window</span>.innerWidth / <span class="keyword">window</span>.innerHeight, <span class="number">1</span>, <span class="number">1000</span>);
+<span class="keyword">camera</span>.position.z = <span class="number">500</span>;
+</code></pre>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/体育/">体育</a>
+  <a class="article-category-link" href="/categories/学习/">学习</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/曼联/">曼联</a>
+  <span></span> <a href="/tags/threejs/">three.js</a><a href="/tags/WebGL/">WebGL</a>
   </div>
 
 </div>
@@ -113,7 +164,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="http://redcafe7.com/2014/08/20/他们说/" data-title="他们说 | 博刻" data-tsina="null" class="share clearfix">
+  <div data-url="http://redcafe7.com/2014/08/05/threejs基础(1)/" data-title="three.js基础(1) | 博刻" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -123,18 +174,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2014/08/27/用颜色说话/" title="用颜色说话">
+ <a href="/2014/08/20/sousuo/" title="网速够快，人心更快">
   <strong>上一篇：</strong><br/>
   <span>
-  用颜色说话</span>
+  网速够快，人心更快</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2014/08/20/sousuo/"  title="网速够快，人心更快">
+<a href="/2014/08/01/初识threejs/"  title="初识three.js">
  <strong>下一篇：</strong><br/> 
- <span>网速够快，人心更快
+ <span>初识three.js
 </span>
 </a>
 </div>
@@ -153,7 +204,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#scene"><span class="toc-number">1.</span> <span class="toc-text">scene</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mesh,geometry,material"><span class="toc-number">2.</span> <span class="toc-text">mesh,geometry,material</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#renderer"><span class="toc-number">3.</span> <span class="toc-text">renderer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#camera"><span class="toc-number">4.</span> <span class="toc-text">camera</span></a></li></ol>
  
   </div>
 
